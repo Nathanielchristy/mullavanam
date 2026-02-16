@@ -25,7 +25,7 @@ export default function Contact() {
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const phoneNumber = "91945948888"; // Your number with country code
+    const phoneNumber = "919495948888"; // Your number with country code
     const message = `*New Inquiry - Mullavanam Group*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Message:* ${formData.message}`;
     
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
