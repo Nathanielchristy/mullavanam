@@ -63,15 +63,15 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li>
                 <a href="tel:+91XXXXXXXXXX" className="hover:text-accent transition-colors">
-                  +91-XXXX-XXXXX
+                  +91-9495948888
                 </a>
               </li>
               <li>
                 <a href="mailto:contact@mullavanam.com" className="hover:text-accent transition-colors">
-                  contact@mullavanam.com
+                  info@mullavanam.com
                 </a>
               </li>
-              <li>Trivandrum, Kerala</li>
+              <li>Venpalavattom,Trivandrum, Kerala,695029</li>
             </ul>
           </div>
 

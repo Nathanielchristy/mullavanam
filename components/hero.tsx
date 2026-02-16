@@ -1,116 +1,122 @@
 'use client'
 
-import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { ArrowRight, Utensils, BedDouble } from 'lucide-react'
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
-    },
+      transition: { delay: i * 0.1, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
+    })
   }
 
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-muted px-4 pt-20"
+    <section 
+      id="hero" 
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#FAF9F6]"
     >
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="text-center max-w-3xl"
-      >
-        {/* Logo */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center mb-8"
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-[#1B3F22]/5 hidden lg:block" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 items-center">
+        
+        {/* Left Content - SEO & Branding */}
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          className="z-10"
         >
-          <div className="relative w-20 h-20">
-            <Image
-              src="/logo.png"
-              alt="Mullavanam Group"
-              fill
-              className="object-contain drop-shadow-lg"
-              priority
-            />
+          <motion.div custom={0} variants={fadeInUp} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#1B3F22]/10 border border-[#1B3F22]/20 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C5A059]"></span>
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#1B3F22]">Now Serving in Trivandrum</span>
+          </motion.div>
+
+          <motion.h1 
+            custom={1} 
+            variants={fadeInUp}
+            className="text-5xl lg:text-7xl font-extrabold text-[#1B3F22] leading-[1.1] mb-6"
+          >
+            Where <span className="text-[#C5A059]">Heritage</span> <br /> 
+            Meets Modernity.
+          </motion.h1>
+
+          <motion.p 
+            custom={2} 
+            variants={fadeInUp}
+            className="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed"
+          >
+            Experience the gold standard of living. From <strong>premium room rentals</strong> to <strong>authentic Kerala tiffin services</strong>, Mullavanam Group brings the heart of Trivandrum to your doorstep.
+          </motion.p>
+
+          <motion.div 
+            custom={3} 
+            variants={fadeInUp}
+            className="flex flex-wrap gap-4"
+          >
+            <button className="group flex items-center bg-[#1B3F22] text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#25522d] hover:shadow-2xl active:scale-95">
+              Explore Living Spaces
+              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </button>
+            <button className="flex items-center border-2 border-[#1B3F22] text-[#1B3F22] px-8 py-4 rounded-xl font-bold transition-all hover:bg-gray-50 active:scale-95">
+              Order Tiffin
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* Right Content - Advanced Visuals */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+        >
+          {/* Main Visual Image - Replace with a high-quality interior or food shot */}
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2000')] bg-cover bg-center">
+            <div className="absolute inset-0 bg-black/10 transition-hover hover:bg-black/0 duration-500" />
           </div>
-        </motion.div>
 
-        {/* Main Headline */}
-        <motion.h1
-          variants={itemVariants}
-          className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 text-balance"
-        >
-          Comfortable Living.
-          <br />
-          <span className="text-accent">Authentic Taste.</span>
-        </motion.h1>
-
-        {/* Tagline */}
-        <motion.p
-          variants={itemVariants}
-          className="text-lg sm:text-xl text-foreground/70 mb-8 max-w-2xl mx-auto text-balance"
-        >
-          Experience premium room rentals and authentic Kerala tiffin services in the heart of Trivandrum
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
+          {/* Floating Feature Cards */}
+          <motion.div 
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-10 right-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20"
           >
-            Book a Room
-          </motion.a>
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
-          >
-            View Today's Menu
-          </motion.a>
-        </motion.div>
+            <div className="bg-[#C5A059] p-3 rounded-xl text-white">
+              <BedDouble size={24} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold text-gray-400">Premium Stay</p>
+              <p className="text-sm font-bold text-[#1B3F22]">Luxury Suites</p>
+            </div>
+          </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="mt-16 flex justify-center"
-        >
-          <svg
-            className="w-6 h-6 text-primary opacity-50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <motion.div 
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-10 left-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20"
           >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
+            <div className="bg-[#1B3F22] p-3 rounded-xl text-white">
+              <Utensils size={24} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-bold text-gray-400">Traditional Taste</p>
+              <p className="text-sm font-bold text-[#1B3F22]">Kerala Tiffin</p>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+        <div className="w-[1px] h-12 bg-gradient-to-b from-[#1B3F22] to-transparent animate-bounce" />
+      </div>
     </section>
   )
 }

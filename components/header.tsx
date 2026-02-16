@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
@@ -11,14 +10,11 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
+      setIsScrolled(window.scrollY > 20)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const toggleMenu = () => setIsOpen(!isOpen)
 
   const navLinks = [
     { href: '#about', label: 'About' },
@@ -29,65 +25,75 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm premium-shadow'
-          : 'bg-white/50 backdrop-blur-sm'
+          ? 'py-3 bg-white/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-b border-white/20'
+          : 'py-6 bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="#" className="flex items-center">
-            <div className="relative w-10 h-10">
-              <Image
-                src="/logo.png"
-                alt="Mullavanam Group"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          
+          {/* Advanced Typography Logo */}
+          <Link href="/" className="group flex flex-col items-start space-y-0">
+            <span className="text-2xl md:text-3xl font-extrabold tracking-tighter text-[#1B3F22] leading-none transition-transform duration-300 group-hover:scale-105">
+              MULLA<span className="text-[#C5A059]">VANAM</span>
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.4em] font-semibold text-gray-500 ml-0.5">
+              Group of Companies
+            </span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Menu with Animated Underlines */}
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-accent transition-colors duration-300 font-medium"
+                className="relative group text-sm uppercase tracking-widest font-bold text-[#1B3F22]/80 hover:text-[#1B3F22] transition-colors duration-300"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+            
+            {/* CTA Button */}
+            <button className="bg-[#1B3F22] text-white px-7 py-2.5 rounded-full text-sm font-bold tracking-wide hover:bg-[#C5A059] hover:shadow-lg transition-all duration-300 active:scale-95">
+              GET IN TOUCH
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMenu}
-            className="md:hidden text-primary focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-[#1B3F22] hover:bg-gray-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4">
+        {/* Advanced Mobile Menu Overlay */}
+        <div className={`md:hidden absolute left-0 right-0 top-full bg-white/95 backdrop-blur-xl transition-all duration-300 ease-in-out border-b border-gray-100 overflow-hidden ${
+          isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="px-6 py-8 flex flex-col space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-foreground hover:text-accent transition-colors duration-300"
+                className="text-2xl font-bold text-[#1B3F22] hover:text-[#C5A059] transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </a>
             ))}
+            <hr className="border-gray-100" />
+            <button className="w-full bg-[#1B3F22] text-white py-4 rounded-xl font-bold tracking-widest">
+              CONTACT US
+            </button>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   )

@@ -1,209 +1,122 @@
 'use client'
 
-import Image from 'next/image'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Send, MapPin, Phone, Mail, ArrowUpRight, Sparkles, CheckCircle } from 'lucide-react'
 
 export default function Contact() {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  })
-
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    message: '',
-  })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' })
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    setFormData({ name: '', phone: '', message: '' })
-  }
-
-  const contactInfo = [
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: '+91-XXXX-XXXXX',
-    },
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'contact@mullavanam.com',
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: 'Trivandrum, Kerala',
-    },
-  ]
 
   return (
-    <section id="contact" className="py-20 px-4 bg-white">
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-        className="max-w-6xl mx-auto"
-      >
-        <motion.div variants={itemVariants} className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="relative w-16 h-16">
-              <Image
-                src="/logo.png"
-                alt="Mullavanam Group"
-                fill
-                className="object-contain"
-              />
-            </div>
+    <section id="contact" className="py-24 bg-[#0A0F1C] text-white" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* SEO & Brand Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="mb-16"
+        >
+          <div className="flex items-center space-x-2 text-[#C5A059] mb-4">
+            <Sparkles size={20} />
+            <span className="text-sm font-bold tracking-[0.3em] uppercase">Premium Concierge</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary mb-4">
-            Get In Touch
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">
+            Mullavanam <span className="text-slate-500 font-light italic">Group.</span>
           </h2>
-          <p className="text-lg text-foreground/70">
-            We'd love to hear from you. Reach out to us anytime we are available.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <div>
-              <h3 className="font-display text-2xl font-bold text-primary mb-6">
-                Contact Information
-              </h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const Icon = info.icon
-                  return (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-6 h-6 text-primary-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">{info.label}</p>
-                        <p className="text-foreground/70">{info.value}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-12 gap-8">
+          
+          {/* Bento Box 1: Contact Info (Direct SEO content) */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="lg:col-span-5 grid gap-6"
+          >
+            {[
+              { icon: <Phone size={24}/>, title: 'Call Us', detail: '+91 9495948888', sub: 'Instant Booking' },
+              { icon: <Mail size={24}/>, title: 'Email', detail: 'info@mullavanam.com', sub: 'Corporate Queries' },
+              { icon: <MapPin size={24}/>, title: 'Location', detail: 'Trivandrum, Kerala', sub: 'Near Technopark' }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                variants={itemVariants}
+                className="p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/[0.08] transition-all group"
+              >
+                <div className="flex justify-between items-start">
+                  <div className="p-3 bg-[#1B3F22] rounded-2xl text-[#C5A059]">
+                    {item.icon}
+                  </div>
+                  <ArrowUpRight className="text-white/20 group-hover:text-[#C5A059] transition-colors" />
+                </div>
+                <div className="mt-6">
+                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-widest">{item.title}</h4>
+                  <p className="text-2xl font-bold mt-1">{item.detail}</p>
+                  <p className="text-sm text-white/40 mt-1">{item.sub}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
 
-            {/* Business Hours */}
-            <div className="bg-muted p-6 rounded-lg">
-              <h4 className="font-semibold text-primary mb-4">Business Hours</h4>
-              <div className="space-y-2 text-sm text-foreground/70">
-                <p>
-                  <span className="font-medium">Monday - Friday:</span> 8:00 AM - 8:00 PM
-                </p>
-                <p>
-                  <span className="font-medium">Saturday:</span> 9:00 AM - 7:00 PM
-                </p>
-                <p>
-                  <span className="font-medium">Sunday:</span> 10:00 AM - 6:00 PM
-                </p>
+          {/* Bento Box 2: The Action Form */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            className="lg:col-span-7 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 rounded-[3rem] p-8 md:p-12"
+          >
+            <h3 className="text-3xl font-bold mb-8">Send an Inquiry</h3>
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-white/40 uppercase ml-2">Full Name</label>
+                  <input type="text" placeholder="Name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-white/40 uppercase ml-2">Phone</label>
+                  <input type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-white/40 uppercase ml-2">Your Message</label>
+                <textarea rows={4} placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none resize-none" />
+              </div>
+
+              <button className="w-full py-5 bg-[#C5A059] text-[#1B3F22] font-black uppercase tracking-widest rounded-2xl flex items-center justify-center space-x-3 hover:brightness-110 transition-all shadow-xl shadow-[#C5A059]/10">
+                <span>Submit Inquiry</span>
+                <Send size={18} />
+              </button>
+            </form>
+
+            <div className="mt-8 flex items-center justify-center space-x-6 text-white/30">
+              <div className="flex items-center space-x-2">
+                <CheckCircle size={14} />
+                <span className="text-[10px] uppercase font-bold tracking-tighter">Verified Property</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle size={14} />
+                <span className="text-[10px] uppercase font-bold tracking-tighter">Authentic Kerala Kitchen</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.form
-            variants={itemVariants}
-            onSubmit={handleSubmit}
-            className="bg-muted rounded-lg p-8 space-y-6"
-          >
-            <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-primary mb-2">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-white border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
-                placeholder="Your name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-primary mb-2">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-white border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all"
-                placeholder="Your phone number"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-primary mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-3 bg-white border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none"
-                placeholder="Your message..."
-              ></textarea>
-            </div>
-
-            <motion.button
-              type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
-            >
-              Send Message
-            </motion.button>
-          </motion.form>
         </div>
-      </motion.div>
+      </div>
+      {/* Hidden SEO Text for Crawlers */}
+      <span className="sr-only">Mullavanam Group: Professional Room Rentals and Kerala Tiffin Services in Trivandrum.</span>
     </section>
   )
 }
