@@ -24,7 +24,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
-      
+          <div>
+            
+            <p className="text-sm text-primary-foreground/70">
+              Premium living and authentic dining in Trivandrum.
+            </p>
+          </div>
 
           {/* Quick Links */}
           <div>
