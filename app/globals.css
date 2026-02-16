@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  /* Premium Green & Gold Theme */
+  --background: 0 0% 100%;
+  --foreground: 138 35% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 138 35% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 138 35% 18%;
+  --primary: 138 35% 18%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 45 100% 49%;
+  --secondary-foreground: 138 35% 18%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 50%;
+  --accent: 45 100% 49%;
+  --accent-foreground: 138 35% 18%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 90%;
+  --input: 0 0% 95%;
+  --ring: 138 35% 18%;
+  --chart-1: 138 35% 25%;
+  --chart-2: 45 100% 49%;
+  --chart-3: 138 30% 40%;
+  --chart-4: 45 100% 60%;
+  --chart-5: 138 35% 30%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 138 35% 18%;
+  --sidebar-primary: 138 35% 18%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 45 100% 49%;
+  --sidebar-accent-foreground: 138 35% 18%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-ring: 45 100% 49%;
+}
+
+.dark {
+  --background: 138 35% 12%;
+  --foreground: 0 0% 98%;
+  --card: 138 35% 18%;
+  --card-foreground: 0 0% 98%;
+  --popover: 138 35% 18%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 138 35% 18%;
+  --secondary: 45 100% 49%;
+  --secondary-foreground: 138 35% 18%;
+  --muted: 138 35% 25%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 45 100% 49%;
+  --accent-foreground: 138 35% 18%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 138 35% 25%;
+  --input: 138 35% 25%;
+  --ring: 45 100% 49%;
+  --chart-1: 45 100% 49%;
+  --chart-2: 138 35% 35%;
+  --chart-3: 45 100% 60%;
+  --chart-4: 138 35% 45%;
+  --chart-5: 45 100% 40%;
+  --sidebar-background: 138 35% 18%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 45 100% 49%;
+  --sidebar-primary-foreground: 138 35% 18%;
+  --sidebar-accent: 138 35% 25%;
+  --sidebar-accent-foreground: 45 100% 49%;
+  --sidebar-border: 138 35% 25%;
+  --sidebar-ring: 45 100% 49%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  @apply antialiased bg-background text-foreground;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-display {
+    font-family: var(--font-playfair);
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 10px 40px rgba(31, 61, 43, 0.12);
+  }
+  
+  .premium-shadow-hover {
+    box-shadow: 0 20px 60px rgba(31, 61, 43, 0.18);
+  }
+  
+  .gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #c9a327 100%);
+  }
+  
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  .transition-smooth {
+    transition: all 0.3s ease-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
