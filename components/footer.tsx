@@ -24,21 +24,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="relative w-10 h-10">
-                <Image
-                  src="/logo.png"
-                  alt="Mullavanam Group"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <p className="text-sm text-primary-foreground/70">
-              Premium living and authentic dining in Trivandrum.
-            </p>
-          </div>
+      
 
           {/* Quick Links */}
           <div>
