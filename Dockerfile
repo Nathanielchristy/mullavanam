@@ -4,8 +4,11 @@
 FROM node:20-slim AS deps
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+# Enable corepack (needed for pnpm)
+RUN corepack enable
+
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 ########################################
 # 2️⃣ Build
@@ -13,10 +16,12 @@ RUN npm install
 FROM node:20-slim AS builder
 WORKDIR /app
 
+RUN corepack enable
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN npm run build
+RUN pnpm build
 
 ########################################
 # 3️⃣ Production Runner
@@ -26,10 +31,10 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+RUN corepack enable
+
+COPY --from=builder /app ./
 
 EXPOSE 3000
-CMD ["npm", "start"]
+
+CMD ["pnpm", "start"]
