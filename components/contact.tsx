@@ -7,6 +7,8 @@ import { Send, MapPin, Phone, Mail, ArrowUpRight, Sparkles, CheckCircle } from '
 
 export default function Contact() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  
+  // State to capture form inputs
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' })
 
   const containerVariants = {
@@ -18,6 +20,18 @@ export default function Contact() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   }
+
+  // Function to handle WhatsApp Redirect
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const phoneNumber = "91945948888"; // Your number with country code
+    const message = `*New Inquiry - Mullavanam Group*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Message:* ${formData.message}`;
+    
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    window.open(whatsappURL, '_blank');
+  };
 
   return (
     <section id="contact" className="py-24 bg-[#0A0F1C] text-white" ref={ref}>
@@ -40,7 +54,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-12 gap-8">
           
-          {/* Bento Box 1: Contact Info (Direct SEO content) */}
+          {/* Bento Box 1: Contact Info */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -48,7 +62,7 @@ export default function Contact() {
             className="lg:col-span-5 grid gap-6"
           >
             {[
-              { icon: <Phone size={24}/>, title: 'Call Us', detail: '+91 9495948888', sub: 'Instant Booking' },
+              { icon: <Phone size={24}/>, title: 'Call Us', detail: '+91 94594 8888', sub: 'Instant Booking' },
               { icon: <Mail size={24}/>, title: 'Email', detail: 'info@mullavanam.com', sub: 'Corporate Queries' },
               { icon: <MapPin size={24}/>, title: 'Location', detail: 'Trivandrum, Kerala', sub: 'Near Technopark' }
             ].map((item, i) => (
@@ -79,23 +93,44 @@ export default function Contact() {
             className="lg:col-span-7 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 rounded-[3rem] p-8 md:p-12"
           >
             <h3 className="text-3xl font-bold mb-8">Send an Inquiry</h3>
-            <form className="space-y-6">
+            <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-white/40 uppercase ml-2">Full Name</label>
-                  <input type="text" placeholder="Name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" />
+                  <input 
+                    type="text" 
+                    placeholder="Name" 
+                    required
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-white/40 uppercase ml-2">Phone</label>
-                  <input type="tel" placeholder="+91" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" />
+                  <input 
+                    type="tel" 
+                    placeholder="+91" 
+                    required
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none" 
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-bold text-white/40 uppercase ml-2">Your Message</label>
-                <textarea rows={4} placeholder="How can we help?" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none resize-none" />
+                <textarea 
+                  rows={4} 
+                  placeholder="How can we help?" 
+                  required
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#C5A059] transition-all outline-none resize-none" 
+                />
               </div>
 
-              <button className="w-full py-5 bg-[#C5A059] text-[#1B3F22] font-black uppercase tracking-widest rounded-2xl flex items-center justify-center space-x-3 hover:brightness-110 transition-all shadow-xl shadow-[#C5A059]/10">
+              <button 
+                type="submit"
+                className="w-full py-5 bg-[#C5A059] text-[#1B3F22] font-black uppercase tracking-widest rounded-2xl flex items-center justify-center space-x-3 hover:brightness-110 transition-all shadow-xl shadow-[#C5A059]/10 active:scale-[0.98]"
+              >
                 <span>Submit Inquiry</span>
                 <Send size={18} />
               </button>
@@ -115,8 +150,7 @@ export default function Contact() {
 
         </div>
       </div>
-      {/* Hidden SEO Text for Crawlers */}
       <span className="sr-only">Mullavanam Group: Professional Room Rentals and Kerala Tiffin Services in Trivandrum.</span>
     </section>
   )
-}
+}   
