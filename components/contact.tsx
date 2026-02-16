@@ -93,7 +93,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-lg text-foreground/70">
-            We'd love to hear from you. Reach out to us anytime.
+            We'd love to hear from you. Reach out to us anytime we are available.
           </p>
         </motion.div>
 
