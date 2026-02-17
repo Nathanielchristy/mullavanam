@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link' // Import Link from Next.js
 import { motion } from 'framer-motion'
 import { ArrowRight, Utensils, BedDouble } from 'lucide-react'
 
@@ -64,52 +65,60 @@ export default function Hero() {
               Explore Living Spaces
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
-            <button className="flex items-center border-2 border-[#1B3F22] text-[#1B3F22] px-8 py-4 rounded-xl font-bold transition-all hover:bg-gray-50 active:scale-95">
-              Order Tiffin
-            </button>
+
+            {/* Link to Ruchi Tiffin Page */}
+            <Link href="/ruchi-tiffin">
+              <button className="group flex items-center border-2 border-[#1B3F22] text-[#1B3F22] px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#1B3F22] hover:text-white active:scale-95">
+                Ruchi Tiffin
+                <Utensils className="ml-2 w-4 h-4 transition-transform group-hover:rotate-12" />
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
 
-        {/* Right Content - Advanced Visuals */}
+        {/* Right Content - Visuals */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
         >
-          {/* Main Visual Image - Replace with a high-quality interior or food shot */}
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2000')] bg-cover bg-center">
             <div className="absolute inset-0 bg-black/10 transition-hover hover:bg-black/0 duration-500" />
           </div>
 
-          {/* Floating Feature Cards */}
-          <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-10 right-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20"
-          >
-            <div className="bg-[#C5A059] p-3 rounded-xl text-white">
-              <BedDouble size={24} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-gray-400">Premium Stay</p>
-              <p className="text-sm font-bold text-[#1B3F22]">Luxury Suites</p>
-            </div>
-          </motion.div>
+          {/* Floating Cards with Links for better UX */}
+          <Link href="/rooms">
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-10 right-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20 cursor-pointer hover:bg-white transition-colors"
+            >
+              <div className="bg-[#C5A059] p-3 rounded-xl text-white">
+                <BedDouble size={24} />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-bold text-gray-400">Premium Stay</p>
+                <p className="text-sm font-bold text-[#1B3F22]">Luxury Suites</p>
+              </div>
+            </motion.div>
+          </Link>
 
-          <motion.div 
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-10 left-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20"
-          >
-            <div className="bg-[#1B3F22] p-3 rounded-xl text-white">
-              <Utensils size={24} />
-            </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-gray-400">Traditional Taste</p>
-              <p className="text-sm font-bold text-[#1B3F22]">Kerala Tiffin</p>
-            </div>
-          </motion.div>
+          <Link href="/ruchi-tiffin">
+            <motion.div 
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute bottom-10 left-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20 cursor-pointer hover:bg-white transition-colors"
+            >
+              <div className="bg-[#1B3F22] p-3 rounded-xl text-white">
+                <Utensils size={24} />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-bold text-gray-400">Traditional Taste</p>
+                <p className="text-sm font-bold text-[#1B3F22]">Kerala Tiffin</p>
+              </div>
+            </motion.div>
+          </Link>
         </motion.div>
       </div>
 
