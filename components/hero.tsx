@@ -104,21 +104,7 @@ export default function Hero() {
             </motion.div>
           </Link>
 
-          <Link href="/ruchi-tiffin">
-            <motion.div 
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-10 left-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20 cursor-pointer hover:bg-white transition-colors"
-            >
-              <div className="bg-[#1B3F22] p-3 rounded-xl text-white">
-                <Utensils size={24} />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold text-gray-400">Traditional Taste</p>
-                <p className="text-sm font-bold text-[#1B3F22]">Kerala Tiffin</p>
-              </div>
-            </motion.div>
-          </Link>
+         
         </motion.div>
       </div>
 
