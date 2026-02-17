@@ -1,191 +1,249 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ArrowLeft,
   Wallet,
-  Zap,
   RotateCcw,
-  Timer,
   CheckCircle,
   ArrowRight,
   ChefHat,
-  Percent,
-  MapPin,
-  Star
+  Menu,
+  X,
+  ShieldCheck,
+  Zap,
+  MapPin
 } from 'lucide-react'
 
-const foodImages = [
-  { url: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?q=80&w=500", alt: "Traditional Kerala Sadhya Lunch Tiffin" },
-  { url: "https://images.unsplash.com/photo-1601050638917-3f040058ec9d?q=80&w=500", alt: "Healthy Masala Dosa Tiffin Service" },
-  { url: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=500", alt: "Authentic Kerala Chicken Curry Tiffin" },
-  { url: "https://images.unsplash.com/photo-1567337710282-00832b415979?q=80&w=500", alt: "Soft Idli and Sambar Tiffin Breakfast" },
-  { url: "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?q=80&w=500", alt: "Premium Rice and Veg Meals Trivandrum" },
-  { url: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=500", alt: "Kerala Fish Curry Meal Delivery" },
-]
+export default function MobileFirstSupreme() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-export default function RuchiTiffinPage() {
   const handleBooking = (plan: string) => {
     const phoneNumber = "91945948888"
-    const message = `*Ruchi Tiffin Booking*%0A%0AHi! I want to book the *${plan}* plan. I love the Carry-Forward credit feature!`
+    const message = `*Mullavanam Inquiry:* I'm interested in the *${plan}* pack (Al Ghadiya x Ruchi).`
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen bg-[#FDFCFB] text-[#0D1F12] antialiased selection:bg-[#D4AF37] selection:text-white">
       
-      {/* --- SEO HEADER / NAV --- */}
-      <header>
-        <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md px-6 py-4 border-b border-slate-50">
-          <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <Link href="/" aria-label="Back to Mullavanam Home" className="flex items-center space-x-2 group">
-              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-              <span className="text-xl font-black tracking-tighter uppercase">RUCHI<span className="text-orange-500">.</span></span>
-            </Link>
-            
-            <div className="hidden md:flex items-center space-x-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-              <span className="flex items-center gap-1"><MapPin size={12}/> Trivandrum</span>
-              <span className="flex items-center gap-1"><Star size={12} fill="currentColor" className="text-orange-500"/> 4.9 Rating</span>
+      {/* --- SEO-OPTIMIZED HEADER --- */}
+      <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-[#D4AF37]/10">
+        <nav className="max-w-[1400px] mx-auto px-6 py-4 md:py-6 flex justify-between items-center" role="navigation">
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="bg-[#0D1F12] p-2 rounded-lg group-hover:bg-[#D4AF37] transition-colors">
+              <ArrowLeft size={18} className="text-[#D4AF37]" />
             </div>
+            <div className="flex flex-col">
+              <span className="text-lg md:text-xl font-black tracking-tighter uppercase leading-none">Mullavanam</span>
+              <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Group Enterprise</span>
+            </div>
+          </Link>
 
-            <button onClick={() => handleBooking('General')} className="bg-[#1B3F22] text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors">
-              Join Now
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest">
+            <a href="#kitchen" className="hover:text-[#D4AF37]">Al Ghadiya Kitchen</a>
+            <a href="#ruchi" className="hover:text-[#D4AF37]">Ruchi Tiffin</a>
+            <a href="#pricing" className="hover:text-[#D4AF37]">Meal Packs</a>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => handleBooking('General')}
+              className="hidden md:block bg-[#0D1F12] text-[#D4AF37] px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-[#D4AF37]/30"
+            >
+              Contact Us
+            </button>
+            <button className="lg:hidden p-2 text-[#0D1F12]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </nav>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-white border-b border-[#D4AF37]/20 overflow-hidden"
+            >
+              <div className="flex flex-col p-6 space-y-4 text-[12px] font-black uppercase tracking-widest">
+                <a href="#kitchen" onClick={() => setIsMenuOpen(false)}>Al Ghadiya Kitchen</a>
+                <a href="#ruchi" onClick={() => setIsMenuOpen(false)}>Ruchi Tiffin</a>
+                <a href="#pricing" onClick={() => setIsMenuOpen(false)}>Meal Packs</a>
+                <button onClick={() => handleBooking('Mobile')} className="w-full bg-[#0D1F12] text-[#D4AF37] py-4 rounded-xl">Inquire Now</button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main>
-        {/* --- HERO SECTION: Optimized for "Tiffin Service" Keywords --- */}
-        <section className="pt-32 pb-20 px-6" aria-labelledby="hero-heading">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <div className="inline-flex items-center space-x-2 border border-orange-200 bg-orange-50 text-orange-600 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-8">
-                  <Zap size={12} fill="currentColor" />
-                  <span>India's Most Flexible Meal Plan</span>
-                </div>
-                {/* H1 is critical for SEO - contains core service keywords */}
-                <h1 id="hero-heading" className="text-7xl lg:text-[8.5rem] font-black leading-[0.85] tracking-tighter mb-8">
-                  Eat "Smart.<br />Pay for Use.
-                </h1>
-                <p className="text-xl text-slate-500 max-w-lg leading-relaxed mb-8">
-                  Premium <strong>Tiffin Service in Trivandrum</strong>. Our unique <strong>carry-forward meal credits</strong> ensure you only pay for the food you actually eat. No more wasted subscriptions.
-                </p>
-                <div className="flex gap-4">
-                  <button onClick={() => handleBooking('Get Started')} className="bg-[#1B3F22] text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform shadow-xl">
-                    Get Free Trial Meal
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* STAGGERED IMAGE GRID with Alt Tags */}
-              <div className="relative flex space-x-4" aria-hidden="true">
-                <div className="flex flex-col space-y-4 pt-12">
-                  <img src={foodImages[0].url} alt={foodImages[0].alt} className="w-48 h-64 object-cover rounded-[3rem]" />
-                  <img src={foodImages[1].url} alt={foodImages[1].alt} className="w-48 h-64 object-cover rounded-[3rem]" />
-                </div>
-                <div className="flex flex-col space-y-4">
-                  <img src={foodImages[2].url} alt={foodImages[2].alt} className="w-48 h-64 object-cover rounded-[3rem]" />
-                  <img src={foodImages[3].url} alt={foodImages[3].alt} className="w-48 h-64 object-cover rounded-[3rem]" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* --- THE BENTO FEATURE CARD --- */}
-        <section className="py-20 px-6 bg-slate-50">
-          <div className="max-w-7xl mx-auto">
+        {/* --- HERO: MOBILE RESPONSIVE OPTIMIZED --- */}
+        <section className="pt-32 md:pt-48 pb-16 md:pb-32 px-6">
+          <div className="max-w-[1400px] mx-auto flex flex-col items-center text-center">
             <motion.div 
-              className="bg-[#1B3F22] rounded-[4rem] p-8 md:p-16 text-white shadow-2xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }}
+              className="z-10"
             >
-              <div className="relative z-10 flex flex-col lg:flex-row justify-between items-center gap-12">
-                <div className="max-w-xl">
-                  <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 italic">The Zero-Waste Meal Wallet</h2>
-                  <p className="text-white/60 text-lg mb-8 italic">
-                    "Traditional tiffin services take your money even if you miss a meal. At Ruchi, unused meals are credited back to your wallet for next month."
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <div className="bg-white/10 px-4 py-2 rounded-xl flex items-center gap-2 border border-white/5">
-                      <RotateCcw size={16} className="text-orange-400" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Unlimited Rollover</span>
-                    </div>
-                    <div className="bg-white/10 px-4 py-2 rounded-xl flex items-center gap-2 border border-white/5">
-                      <Timer size={16} className="text-orange-400" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Flex-Cancel (8AM)</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <article className="bg-white rounded-[3rem] p-10 text-[#1B3F22] text-center min-w-[280px] shadow-2xl">
-                   <span className="text-orange-500 font-black text-[10px] uppercase tracking-widest">Most Popular Choice</span>
-                   <p className="text-6xl font-black my-4 tracking-tighter">₹5,499</p>
-                   <p className="text-xs font-bold text-slate-400 uppercase mb-8">60 Flexible Meal Credits</p>
-                   <button onClick={() => handleBooking('Executive Combo')} className="w-full bg-[#1B3F22] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-orange-500 transition-colors">Buy Credit Pack</button>
-                </article>
+              <div className="inline-flex items-center space-x-2 bg-[#D4AF37]/10 text-[#8A6D3B] px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 md:mb-10">
+                <MapPin size={12} />
+                <span>Trivandrum's Premium Tiffin Network</span>
               </div>
-              <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] -mr-48 -mt-48" />
+              <h1 className="text-5xl md:text-[9rem] font-black leading-[0.9] tracking-tighter mb-8 uppercase">
+                Eat <span className="text-[#D4AF37] italic">Smart.</span> <br/> Pay for <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">Use.</span>
+              </h1>
+              <p className="text-base md:text-xl text-slate-500 max-w-2xl leading-relaxed mb-10 md:mb-14 italic px-4">
+                Powered by <strong>Al Ghadiya Kitchen</strong>. Managed by <strong>Ruchi Tiffin</strong>. The first meal wallet with lifetime rollover credits.
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                 <button onClick={() => handleBooking('Hero')} className="bg-[#0D1F12] text-[#D4AF37] px-10 py-5 rounded-[2rem] text-xs font-black uppercase tracking-widest shadow-2xl flex items-center justify-center group">
+                    Book Your First Meal
+                    <ArrowRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                 </button>
+              </div>
             </motion.div>
+
+            {/* Responsive Image Grid */}
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 w-full max-w-5xl">
+               <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?q=80&w=600" className="aspect-square object-cover rounded-[2rem] md:rounded-[4rem] shadow-lg" alt="Al Ghadiya Premium Meals" />
+               <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=600" className="aspect-square object-cover rounded-[2rem] md:rounded-[4rem] shadow-lg md:mt-12" alt="Corporate Kitchen Standards" />
+               <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=600" className="hidden md:block aspect-square object-cover rounded-[4rem] shadow-lg" alt="Ruchi Tiffin Delivery" />
+            </div>
           </div>
         </section>
 
-        {/* --- PRICING GRID: Use <article> for individual items --- */}
-        <section className="py-24 px-6 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-16">
-              <h2 className="text-5xl font-black tracking-tighter uppercase italic">Flexible Meal Plans</h2>
-              <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.4em] mt-4">Home-Cooked delivery in Trivandrum</p>
-            </header>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Plan 1 */}
-              <article className="p-12 rounded-[3.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
-                <h3 className="text-xl font-black uppercase italic mb-2 tracking-tighter">Standard Lunch</h3>
-                <p className="text-4xl font-black mb-8 italic text-orange-500">₹2,999</p>
-                <ul className="space-y-4 mb-10 text-xs font-bold text-slate-500 italic">
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> 30 Meal Credits</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> Mon - Sat Delivery</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> Carry-Forward Credits</li>
-                </ul>
-                <button onClick={() => handleBooking('Standard Lunch')} className="w-full py-4 border-2 border-[#1B3F22] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#1B3F22] hover:text-white transition-all">Select Plan</button>
-              </article>
-
-              {/* Plan 2 */}
-              <article className="p-12 rounded-[3.5rem] bg-[#1B3F22] text-white shadow-2xl scale-105 relative">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 px-4 py-1 rounded-full text-[8px] font-black uppercase tracking-widest shadow-lg">Technopark Favorite</div>
-                <h3 className="text-xl font-black uppercase italic mb-2 tracking-tighter">Executive Combo</h3>
-                <p className="text-4xl font-black mb-8 italic text-orange-400">₹5,499</p>
-                <ul className="space-y-4 mb-10 text-xs font-bold italic opacity-80">
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-orange-400"/> 60 Meal Credits</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-orange-400"/> Lunch + Dinner Delivery</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-orange-400"/> Sunday Special Sadhya</li>
-                </ul>
-                <button onClick={() => handleBooking('Executive Combo')} className="w-full py-4 bg-white text-[#1B3F22] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-all">Best Value</button>
-              </article>
-
-              {/* Plan 3 */}
-              <article className="p-12 rounded-[3.5rem] border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl transition-all">
-                <h3 className="text-xl font-black uppercase italic mb-2 tracking-tighter">Trial Week</h3>
-                <p className="text-4xl font-black mb-8 italic text-orange-500">₹849</p>
-                <ul className="space-y-4 mb-10 text-xs font-bold text-slate-500 italic">
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> 7 Meal Credits</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> Instant Setup</li>
-                  <li className="flex items-center gap-3"><CheckCircle size={14} className="text-green-600"/> No Commitment</li>
-                </ul>
-                <button onClick={() => handleBooking('Trial Week')} className="w-full py-4 border-2 border-[#1B3F22] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#1B3F22] hover:text-white transition-all">Start Trial</button>
-              </article>
+        {/* --- AL GHADIYA: THE KITCHEN ENGINE (SEO: Service Area) --- */}
+        <section id="kitchen" className="py-20 md:py-32 bg-[#0D1F12] text-white rounded-[3rem] md:rounded-[7rem] mx-4 overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="order-2 md:order-1">
+              <div className="relative">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=800" className="rounded-[3rem] md:rounded-[5rem] w-full" alt="Al Ghadiya Kitchen Facility" />
+                <div className="absolute -bottom-6 -right-6 bg-[#D4AF37] p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] text-[#0D1F12] shadow-xl">
+                   <ShieldCheck size={32} />
+                   <p className="font-black text-xl mt-2 uppercase tracking-tighter">ISO 22000</p>
+                </div>
+              </div>
             </div>
+            <div className="order-1 md:order-2">
+              <span className="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.5em] mb-4 md:mb-8 block italic">The Powerhouse</span>
+              <h2 className="text-4xl md:text-8xl font-black tracking-tighter uppercase mb-8 italic leading-none">Al Ghadiya <br/> Kitchen.</h2>
+              <p className="text-white/50 text-base md:text-xl leading-relaxed mb-10">
+                Operating a massive 10,000 sq.ft facility in Trivandrum, we provide the industrial scale required for corporate excellence with the soul of home-cooked flavors.
+              </p>
+              <div className="flex gap-8">
+                <div className="flex flex-col">
+                  <span className="text-3xl font-black text-[#D4AF37]">100+</span>
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">Meals served Daily</span>
+                </div>
+                <div className="w-[1px] bg-white/10" />
+                <div className="flex flex-col">
+                  <span className="text-3xl font-black text-[#D4AF37]">12+ Yrs</span>
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">Heritage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- RUCHI: SMART WALLET (SEO: Feature Keywords) --- */}
+        <section id="ruchi" className="py-20 md:py-40 px-6">
+          <div className="max-w-[1400px] mx-auto text-center">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mb-16 md:mb-24 italic underline decoration-[#D4AF37] underline-offset-8">The Ruchi Tiffin <span className="text-[#D4AF37]">Advantage.</span></h2>
+              
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+               {/* Mobile Bento Card 1 */}
+               <div className="bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                  <div className="bg-[#D4AF37]/10 p-6 rounded-full text-[#D4AF37] mb-8">
+                     <RotateCcw size={40} />
+                  </div>
+                  <h4 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter mb-4">Zero Loss Rollover</h4>
+                  <p className="text-slate-500 max-w-xs leading-relaxed font-medium italic">Unused meal credits carry forward automatically. Your money, saved.</p>
+               </div>
+
+               {/* Mobile Bento Card 2 */}
+               <div className="bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
+                  <div className="bg-[#D4AF37]/10 p-6 rounded-full text-[#D4AF37] mb-8">
+                     <Wallet size={40} />
+                  </div>
+                  <h4 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter mb-4">Digital Meal Wallet</h4>
+                  <p className="text-slate-500 max-w-xs leading-relaxed font-medium italic">Pause, play, or cancel your tiffin with one tap before 8:00 AM.</p>
+               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- PRICING: SEO-READY ARTICLE TAGS --- */}
+        <section id="pricing" className="py-20 md:py-32 px-6 bg-[#F5F2ED] rounded-[3rem] md:rounded-[7rem] mx-4 mb-10">
+          <div className="max-w-[1400px] mx-auto text-center">
+             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400 mb-6 block">Pricing Table</span>
+             <h3 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-16 italic text-[#0D1F12]">Select Your <span className="text-[#D4AF37]">Credit Pack.</span></h3>
+
+             <div className="grid md:grid-cols-3 gap-8 md:gap-12 items-end">
+                {/* Pack 1 */}
+                <article className="bg-white p-10 md:p-14 rounded-[4rem] text-left shadow-sm">
+                   <h4 className="text-2xl font-black uppercase italic tracking-tighter mb-2">Standard</h4>
+                   <p className="text-[10px] font-bold uppercase text-slate-400 mb-8">Daily Lunch Credits</p>
+                   <div className="flex items-baseline mb-10">
+                      <span className="text-5xl font-black">₹2,999</span>
+                      <span className="text-[10px] font-bold ml-2 opacity-30">/ 30 Meals</span>
+                   </div>
+                   <button onClick={() => handleBooking('Standard')} className="w-full py-5 rounded-[2rem] bg-[#0D1F12] text-white text-[10px] font-black uppercase tracking-widest hover:bg-[#D4AF37] transition-colors">Buy Credits</button>
+                </article>
+
+                {/* Pack 2 (Supreme Choice) */}
+                <article className="bg-[#0D1F12] p-12 md:p-16 rounded-[4rem] text-left text-white shadow-2xl scale-100 md:scale-110 relative overflow-hidden">
+                   <div className="absolute top-6 right-8 bg-[#D4AF37] text-[#0D1F12] px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">Most Popular</div>
+                   <h4 className="text-3xl font-black uppercase italic tracking-tighter mb-2 text-[#D4AF37]">Elite Combo</h4>
+                   <p className="text-[10px] font-bold uppercase text-white/40 mb-8">Lunch + Dinner + Sunday Special</p>
+                   <div className="flex items-baseline mb-12">
+                      <span className="text-6xl font-black">₹5,499</span>
+                      <span className="text-[10px] font-bold ml-2 opacity-40">/ 60 Meals</span>
+                   </div>
+                   <button onClick={() => handleBooking('Elite')} className="w-full py-6 rounded-[2.5rem] bg-[#D4AF37] text-[#0D1F12] text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all">Claim Elite Access</button>
+                </article>
+
+                {/* Pack 3 */}
+                <article className="bg-white p-10 md:p-14 rounded-[4rem] text-left shadow-sm">
+                   <h4 className="text-2xl font-black uppercase italic tracking-tighter mb-2">Trial Pack</h4>
+                   <p className="text-[10px] font-bold uppercase text-slate-400 mb-8">1 Week Experience</p>
+                   <div className="flex items-baseline mb-10">
+                      <span className="text-5xl font-black">₹849</span>
+                      <span className="text-[10px] font-bold ml-2 opacity-30">/ 7 Meals</span>
+                   </div>
+                   <button onClick={() => handleBooking('Trial')} className="w-full py-5 rounded-[2rem] border-2 border-[#0D1F12] text-[#0D1F12] text-[10px] font-black uppercase tracking-widest hover:bg-[#0D1F12] hover:text-white transition-colors">Start Trial</button>
+                </article>
+             </div>
           </div>
         </section>
       </main>
 
-      {/* --- SEO FOOTER --- */}
-      <footer className="py-20 px-6 border-t border-slate-50 text-center">
-        <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.6em] mb-4">Ruchi Tiffin • A Mullavanam Group Company</p>
-        <p className="text-slate-300 text-[10px] uppercase font-bold tracking-widest">Delivering across Technopark, Kazhakkoottam, and Trivandrum City.</p>
+      {/* --- SUPREME FOOTER --- */}
+      <footer className="bg-white pt-20 pb-10 px-6">
+        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-12 border-b border-slate-100 pb-20">
+           <div>
+              <h4 className="text-3xl font-black uppercase tracking-tighter mb-4 italic underline decoration-[#D4AF37] underline-offset-4">Mullavanam Group.</h4>
+              <p className="text-slate-400 text-sm max-w-md italic font-medium">The intersection of Al Ghadiya's massive culinary history and Ruchi's digital future. Trusted across Technopark and Trivandrum since 2012.</p>
+           </div>
+           <div className="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
+              <div className="space-y-4">
+                 <p className="text-[#D4AF37]">The Kitchen</p>
+                 <p className="opacity-40">Phase 1, Technopark</p>
+              </div>
+              <div className="space-y-4 text-right md:text-left">
+                 <p className="text-[#D4AF37]">Connect</p>
+                 <p className="opacity-40">+91 94594 88888</p>
+              </div>
+           </div>
+        </div>
+        <div className="text-center mt-10">
+           <p className="text-[9px] font-black uppercase tracking-[0.6em] text-slate-200">© 2026 Al Ghadiya Kitchen × Ruchi Tiffin • All Credits Protected</p>
+        </div>
       </footer>
     </div>
   )
