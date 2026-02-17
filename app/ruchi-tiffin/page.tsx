@@ -96,7 +96,7 @@ export default function MobileFirstSupreme() {
                 <span>Trivandrum's Premium Tiffin Network</span>
               </div>
               <h1 className="text-5xl md:text-[9rem] font-black leading-[0.9] tracking-tighter mb-8 uppercase">
-                Eat <span className="text-[#D4AF37] italic">Smart.</span> <br/> Pay for <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">Use.</span>
+                Pay <span className="text-[#D4AF37] italic">For.</span> <br/> What you eat <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">Use.</span>
               </h1>
               <p className="text-base md:text-xl text-slate-500 max-w-2xl leading-relaxed mb-10 md:mb-14 italic px-4">
                 Powered by <strong>Al Ghadiya Kitchen</strong>. Managed by <strong>Ruchi Tiffin</strong>. The first meal wallet with lifetime rollover credits.
@@ -124,10 +124,7 @@ export default function MobileFirstSupreme() {
             <div className="order-2 md:order-1">
               <div className="relative">
                 <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=800" className="rounded-[3rem] md:rounded-[5rem] w-full" alt="Al Ghadiya Kitchen Facility" />
-                <div className="absolute -bottom-6 -right-6 bg-[#D4AF37] p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] text-[#0D1F12] shadow-xl">
-                   <ShieldCheck size={32} />
-                   <p className="font-black text-xl mt-2 uppercase tracking-tighter">ISO 22000</p>
-                </div>
+               
               </div>
             </div>
             <div className="order-1 md:order-2">
@@ -155,7 +152,7 @@ export default function MobileFirstSupreme() {
         <section id="ruchi" className="py-20 md:py-40 px-6">
           <div className="max-w-[1400px] mx-auto text-center">
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mb-16 md:mb-24 italic underline decoration-[#D4AF37] underline-offset-8">The Ruchi Tiffin <span className="text-[#D4AF37]">Advantage.</span></h2>
-              
+
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                {/* Mobile Bento Card 1 */}
                <div className="bg-white p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm flex flex-col items-center text-center">
