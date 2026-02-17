@@ -96,7 +96,7 @@ export default function MobileFirstSupreme() {
                 <span>Trivandrum's Premium Tiffin Network</span>
               </div>
               <h1 className="text-5xl md:text-[9rem] font-black leading-[0.9] tracking-tighter mb-8 uppercase">
-                Pay <span className="text-[#D4AF37] italic">For.</span> <br/> What you eat <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">Use.</span>
+                Pay <span className="text-[#D4AF37] italic">For.</span> <br/> What you eat <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">  </span>
               </h1>
               <p className="text-base md:text-xl text-slate-500 max-w-2xl leading-relaxed mb-10 md:mb-14 italic px-4">
                 Powered by <strong>Al Ghadiya Kitchen</strong>. Managed by <strong>Ruchi Tiffin</strong>. The first meal wallet with lifetime rollover credits.
