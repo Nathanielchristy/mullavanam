@@ -61,10 +61,12 @@ export default function Hero() {
             variants={fadeInUp}
             className="flex flex-wrap gap-4"
           >
-            <button className="group flex items-center bg-[#1B3F22] text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#25522d] hover:shadow-2xl active:scale-95">
-              Explore Living Spaces
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </button>
+            <Link href="/room-booking">
+              <button className="group flex items-center bg-[#1B3F22] text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#25522d] hover:shadow-2xl active:scale-95">
+                Book a Room
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
 
             {/* Link to Ruchi Tiffin Page */}
             <Link href="/ruchi-tiffin">
