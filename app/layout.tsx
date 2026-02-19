@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-
 import './globals.css'
+// Import the WhatsApp component (make sure the path matches where you saved it)
+import WhatsAppButton from '../components/WhatsAppButton' 
 
 export const metadata: Metadata = {
   title: 'Mullavanam Group - Premium Living & Authentic Dining',
@@ -26,7 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      {/* 1. suppressHydrationWarning is added to the body to stop 
+             browser extension errors (like fdprocessedid).
+      */}
+      <body 
+        className="font-sans antialiased" 
+        suppressHydrationWarning={true}
+      >
+        {children}
+        
+        {/* 2. WhatsApp Button added here so it shows on every page */}
+        <WhatsAppButton />
+      </body>
     </html>
   )
 }

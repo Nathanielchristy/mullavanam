@@ -2,106 +2,122 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Award, Users, Heart, ShieldCheck } from 'lucide-react'
+import { Wallet, MapPin, Coffee, ShieldCheck, ArrowRight } from 'lucide-react'
 
-export default function About() {
+export default function BudgetAbout() {
   const { ref, inView } = useInView({
     threshold: 0.2,
     triggerOnce: true,
   })
 
-  const stats = [
-    { icon: <Users className="w-5 h-5" />, label: 'Happy Residents', value: '500+' },
-    { icon: <Heart className="w-5 h-5" />, label: 'Meals Served', value: '10k+' },
-    { icon: <ShieldCheck className="w-5 h-5" />, label: 'Hygiene Rating', value: 'A+' },
-    { icon: <Award className="w-5 h-5" />, label: 'Years of Trust', value: '12+' },
+  const features = [
+    { 
+      icon: <Wallet className="w-5 h-5" />, 
+      title: 'Budget Friendly', 
+      desc: 'Lowest price guaranteed for premium rooms in Trivandrum.' 
+    },
+    { 
+      icon: <MapPin className="w-5 h-5" />, 
+      title: 'Prime Location', 
+      desc: 'Walking distance to major transit hubs and Al Ghadiya kitchen.' 
+    },
+    { 
+      icon: <Coffee className="w-5 h-5" />, 
+      title: 'Quality Service', 
+      desc: 'Affordable stays shouldn’t compromise on cleanliness or comfort.' 
+    },
+    { 
+      icon: <ShieldCheck className="w-5 h-5" />, 
+      title: 'Safe & Secure', 
+      desc: '24/7 security and verified guest entries for total peace of mind.' 
+    },
   ]
 
   return (
-    <section id="about" className="py-24 px-6 bg-white overflow-hidden" ref={ref}>
+    <section id="about" className="py-20 px-6 bg-[#FDFCFB]" ref={ref}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left Side: Visual Storytelling */}
-          <div className="lg:col-span-5 relative">
+          {/* Left Side: Image with Value Badge */}
+          <div className="relative">
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="relative z-10 rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className="rounded-[2.5rem] overflow-hidden shadow-xl border-8 border-white"
             >
-              {/* Main Lifestyle Image */}
               <img 
-                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000" 
-                alt="Premium Living" 
-                className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
+                src="https://i.pinimg.com/1200x/49/63/e7/4963e768b1c989161482936ee2abd744.jpg" 
+                alt="Affordable Budget Stay in Trivandrum" 
+                className="w-full h-[450px] object-cover"
               />
             </motion.div>
             
-            {/* Decorative Gold Frame */}
-            <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-[#C5A059]/30 rounded-2xl -z-10 hidden md:block" />
-            
-            {/* Floating "Since" Badge */}
+            {/* SEO Floating Badge */}
             <motion.div 
-              initial={{ scale: 0 }}
-              animate={inView ? { scale: 1 } : {}}
-              className="absolute -top-10 -left-10 bg-[#1B3F22] text-white p-8 rounded-full shadow-xl hidden lg:flex flex-col items-center justify-center border-4 border-white"
+              initial={{ x: 50, opacity: 0 }}
+              animate={inView ? { x: 0, opacity: 1 } : {}}
+              transition={{ delay: 0.5 }}
+              className="absolute -bottom-6 -right-2 md:right-10 bg-[#D4AF37] p-6 rounded-2xl shadow-2xl text-[#1B3F22]"
             >
-              <span className="text-[10px] uppercase tracking-widest font-bold opacity-70">Established</span>
-              <span className="text-2xl font-black">2012</span>
+              <p className="text-[10px] font-black uppercase tracking-tighter">Starting From</p>
+              <p className="text-3xl font-black">₹999<span className="text-sm">/day</span></p>
             </motion.div>
           </div>
 
-          {/* Right Side: Content & Stats */}
-          <div className="lg:col-span-7">
+          {/* Right Side: SEO Content */}
+          <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#C5A059] mb-4">
-                Our Legacy
+              <h2 className="inline-block bg-[#1B3F22] text-[#D4AF37] px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+                Best Budget Stays in Trivandrum
               </h2>
-              <h3 className="text-4xl md:text-5xl font-extrabold text-[#1B3F22] mb-8 leading-tight">
-                Crafting the Art of <br />
-                <span className="italic font-serif font-light">Authentic Hospitality</span>
+              <h3 className="text-4xl md:text-5xl font-black text-[#1B3F22] leading-[1.1] mb-6">
+                Your Preferred <span className="text-[#D4AF37]">Budget Stay</span> in Trivandrum
               </h3>
               
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-10">
+              <div className="text-gray-600 text-lg space-y-4 mb-8">
                 <p>
-                  Mullavanam Group emerged from a simple vision: to redefine urban living in Trivandrum by marrying 
-                  <strong className="text-[#1B3F22]"> premium comfort</strong> with the warmth of 
-                  <strong className="text-[#1B3F22]"> traditional Kerala heritage</strong>.
+                  At <strong className="text-[#1B3F22]">Mullavanam Stays</strong>, our vision is simple: providing high-quality, 
+                  <span className="text-[#1B3F22] font-bold"> affordable accommodation in Trivandrum</span> for students, 
+                  travelers, and professionals. 
                 </p>
-                <p>
-                  Whether it is our meticulously curated room rentals or our farm-to-table tiffin services, we don’t just provide a service—we host an experience. Our philosophy is rooted in <em>'Athithi Devo Bhava'</em>, ensuring every interaction feels like family.
+                <p className="text-base">
+                  We believe that a tight budget shouldn't mean a compromise on hygiene or safety. 
+                  Located in the heart of the city, we offer the most competitive rates for clean, 
+                  modern, and well-maintained rooms.
                 </p>
               </div>
 
-              {/* Advanced Stats Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-t border-gray-100">
-                {stats.map((stat, idx) => (
+              {/* Feature Grid */}
+              <div className="grid sm:grid-cols-2 gap-6">
+                {features.map((item, idx) => (
                   <motion.div 
                     key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.5 + (idx * 0.1) }}
-                    className="text-center sm:text-left"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.2 * idx }}
+                    className="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition-all group border border-transparent hover:border-slate-100"
                   >
-                    <div className="text-[#C5A059] mb-2 flex justify-center sm:justify-start">{stat.icon}</div>
-                    <div className="text-2xl font-bold text-[#1B3F22]">{stat.value}</div>
-                    <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{stat.label}</div>
+                    <div className="bg-[#D4AF37]/20 p-3 rounded-xl text-[#1B3F22] group-hover:bg-[#1B3F22] group-hover:text-[#D4AF37] transition-colors h-fit">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#1B3F22] text-sm uppercase">{item.title}</h4>
+                      <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
 
-              <motion.button 
-                whileHover={{ x: 10 }}
-                className="mt-4 flex items-center space-x-3 text-[#1B3F22] font-bold group"
-              >
-                <span className="border-b-2 border-[#C5A059]">Discover Our Story</span>
-                <span className="text-[#C5A059] transition-transform group-hover:translate-x-2">→</span>
-              </motion.button>
+              <motion.div className="pt-8">
+                <button className="flex items-center gap-3 bg-[#1B3F22] text-[#D4AF37] px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-black transition-all shadow-lg">
+                  View Budget Plans <ArrowRight size={16} />
+                </button>
+              </motion.div>
             </motion.div>
           </div>
 
