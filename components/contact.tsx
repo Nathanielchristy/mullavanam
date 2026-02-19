@@ -25,7 +25,7 @@ export default function Contact() {
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const phoneNumber = "919495948888"; // Your number with country code
+    const phoneNumber = "91949598888"; // Your number with country code
     const message = `*New Inquiry - Mullavanam Group*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Message:* ${formData.message}`;
     
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -62,7 +62,7 @@ export default function Contact() {
             className="lg:col-span-5 grid gap-6"
           >
             {[
-              { icon: <Phone size={24}/>, title: 'Call Us', detail: '+91 94594 8888', sub: 'Instant Booking' },
+              { icon: <Phone size={24}/>, title: 'Call Us', detail: '+91 9495948888', sub: 'Instant Booking' },
               { icon: <Mail size={24}/>, title: 'Email', detail: 'info@mullavanam.com', sub: 'Corporate Queries' },
               { icon: <MapPin size={24}/>, title: 'Location', detail: 'Trivandrum, Kerala', sub: 'Near Technopark' }
             ].map((item, i) => (
