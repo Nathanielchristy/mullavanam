@@ -90,7 +90,7 @@ export default function Hero() {
           </div>
 
           {/* Floating Cards with Links for better UX */}
-          <Link href="/rooms">
+          <Link href="/room-booking">
             <motion.div 
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -100,8 +100,8 @@ export default function Hero() {
                 <BedDouble size={24} />
               </div>
               <div>
-                <p className="text-[10px] uppercase font-bold text-gray-400">Premium Stay</p>
-                <p className="text-sm font-bold text-[#1B3F22]">Luxury Suites</p>
+                <p className="text-[10px] uppercase font-bold text-gray-400">Premium</p>
+                <p className="text-sm font-bold text-[#1B3F22]">Budget Stay</p>
               </div>
             </motion.div>
           </Link>
