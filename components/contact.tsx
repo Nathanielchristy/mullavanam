@@ -43,10 +43,6 @@ export default function Contact() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mb-16"
         >
-          <div className="flex items-center space-x-2 text-[#C5A059] mb-4">
-            <Sparkles size={20} />
-            <span className="text-sm font-bold tracking-[0.3em] uppercase">Premium Concierge</span>
-          </div>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">
             Mullavanam <span className="text-slate-500 font-light italic">Group.</span>
           </h2>
