@@ -20,7 +20,7 @@ export default function Header() {
     { href: '#about', label: 'About' },
     { href: '#services', label: 'Services' },
     { href: '#gallery', label: 'Gallery' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#contact', label: 'Contact' }, // Single clean contact link
   ]
 
   return (
@@ -34,7 +34,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Advanced Typography Logo */}
+          {/* Logo */}
           <Link href="/" className="group flex flex-col items-start space-y-0">
             <span className="text-2xl md:text-3xl font-extrabold tracking-tighter text-[#1B3F22] leading-none transition-transform duration-300 group-hover:scale-105">
               MULLA<span className="text-[#C5A059]">VANAM</span>
@@ -44,7 +44,7 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Desktop Menu with Animated Underlines */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <a
@@ -57,10 +57,14 @@ export default function Header() {
               </a>
             ))}
             
-            {/* CTA Button */}
-            <button className="bg-[#1B3F22] text-white px-7 py-2.5 rounded-full text-sm font-bold tracking-wide hover:bg-[#C5A059] hover:shadow-lg transition-all duration-300 active:scale-95">
+            {/* GET IN TOUCH - Changed to <a> for scrolling */}
+            <a 
+              href="#contact"
+              suppressHydrationWarning
+              className="bg-[#1B3F22] text-white px-7 py-2.5 rounded-full text-sm font-bold tracking-wide hover:bg-[#C5A059] hover:shadow-lg transition-all duration-300 active:scale-95 inline-block text-center"
+            >
               GET IN TOUCH
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -68,12 +72,13 @@ export default function Header() {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-[#1B3F22] hover:bg-gray-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
+            suppressHydrationWarning
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Advanced Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay */}
         <div className={`md:hidden absolute left-0 right-0 top-full bg-white/95 backdrop-blur-xl transition-all duration-300 ease-in-out border-b border-gray-100 overflow-hidden ${
           isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}>
@@ -89,9 +94,16 @@ export default function Header() {
               </a>
             ))}
             <hr className="border-gray-100" />
-            <button className="w-full bg-[#1B3F22] text-white py-4 rounded-xl font-bold tracking-widest">
+            
+            {/* CONTACT US - Changed to <a> for scrolling */}
+            <a 
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              suppressHydrationWarning
+              className="w-full bg-[#1B3F22] text-white py-4 rounded-xl font-bold tracking-widest text-center block"
+            >
               CONTACT US
-            </button>
+            </a>
           </div>
         </div>
       </nav>
