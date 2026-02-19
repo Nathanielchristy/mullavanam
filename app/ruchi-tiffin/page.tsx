@@ -44,7 +44,7 @@ export default function MobileFirstSupreme() {
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest">
-            <a href="#kitchen" className="hover:text-[#D4AF37]">Al Ghadiya Kitchen</a>
+            <a href="#kitchen" className="hover:text-[#D4AF37]">Al Gadhiya Kitchen</a>
             <a href="#ruchi" className="hover:text-[#D4AF37]">Ruchi Tiffin</a>
             <a href="#pricing" className="hover:text-[#D4AF37]">Meal Packs</a>
           </div>
@@ -72,7 +72,7 @@ export default function MobileFirstSupreme() {
               className="lg:hidden bg-white border-b border-[#D4AF37]/20 overflow-hidden"
             >
               <div className="flex flex-col p-6 space-y-4 text-[12px] font-black uppercase tracking-widest">
-                <a href="#kitchen" onClick={() => setIsMenuOpen(false)}>Al Ghadiya Kitchen</a>
+                <a href="#kitchen" onClick={() => setIsMenuOpen(false)}>Al Gadhiya Kitchen</a>
                 <a href="#ruchi" onClick={() => setIsMenuOpen(false)}>Ruchi Tiffin</a>
                 <a href="#pricing" onClick={() => setIsMenuOpen(false)}>Meal Packs</a>
                 <button onClick={() => handleBooking('Mobile')} className="w-full bg-[#0D1F12] text-[#D4AF37] py-4 rounded-xl">Inquire Now</button>
@@ -99,7 +99,7 @@ export default function MobileFirstSupreme() {
                 Pay <span className="text-[#D4AF37] italic">For.</span> <br/> What you eat <span className="underline decoration-[#D4AF37] decoration-4 md:decoration-8 underline-offset-4">  </span>
               </h1>
               <p className="text-base md:text-xl text-slate-500 max-w-2xl leading-relaxed mb-10 md:mb-14 italic px-4">
-                Powered by <strong>Al Ghadiya Kitchen</strong>. Managed by <strong>Ruchi Tiffin</strong>. The first meal wallet with lifetime rollover credits.
+                Powered by <strong>Al Gadhiya Kitchen</strong>. Managed by <strong>Ruchi Tiffin</strong>. The first meal wallet with lifetime rollover credits.
               </p>
               <div className="flex flex-col md:flex-row gap-4 justify-center">
                  <button onClick={() => handleBooking('Hero')} className="bg-[#0D1F12] text-[#D4AF37] px-10 py-5 rounded-[2rem] text-xs font-black uppercase tracking-widest shadow-2xl flex items-center justify-center group">
@@ -129,7 +129,7 @@ export default function MobileFirstSupreme() {
             </div>
             <div className="order-1 md:order-2">
               <span className="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.5em] mb-4 md:mb-8 block italic">The Powerhouse</span>
-              <h2 className="text-4xl md:text-8xl font-black tracking-tighter uppercase mb-8 italic leading-none">Al Ghadiya <br/> Kitchen.</h2>
+              <h2 className="text-4xl md:text-8xl font-black tracking-tighter uppercase mb-8 italic leading-none">Al Gadhiya <br/> Kitchen.</h2>
               <p className="text-white/50 text-base md:text-xl leading-relaxed mb-10">
                 Operating a massive 10,000 sq.ft facility in Trivandrum, we provide the industrial scale required for corporate excellence with the soul of home-cooked flavors.
               </p>
@@ -239,7 +239,7 @@ export default function MobileFirstSupreme() {
            </div>
         </div>
         <div className="text-center mt-10">
-           <p className="text-[9px] font-black uppercase tracking-[0.6em] text-slate-200">© 2026 Al Ghadiya Kitchen × Ruchi Tiffin • All Credits Protected</p>
+           <p className="text-[9px] font-black uppercase tracking-[0.6em] text-slate-200">© 2026 Al Gadhiya Kitchen × Ruchi Tiffin • All Credits Protected</p>
         </div>
       </footer>
     </div>
