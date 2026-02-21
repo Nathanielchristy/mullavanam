@@ -21,7 +21,7 @@ export default function Gallery() {
     { id: 3, category: 'food', title: 'Fresh Appam & Stew', img: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=1000' },
     { id: 4, category: 'rooms', title: 'Room for rent', img: 'https://cupliv.com/images/bangalore/Settl-Siena/1.jpg' },
     { id: 5, category: 'food', title: 'Daily Tiffin Service', img: 'https://www.contiki.com/six-two/app/uploads/2024/03/IMG-20240318-WA0007-e1710844435378.jpg' },
-    { id: 6, category: 'rooms', title: 'Tasty lunch', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSneBguKyINXBbUh2lQrR7lL3XGkZ1wznELcg&s' },
+    { id: 6, category: 'food', title: 'Tasty lunch', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSneBguKyINXBbUh2lQrR7lL3XGkZ1wznELcg&s' },
   ]
 
   const filteredItems = filter === 'all' 

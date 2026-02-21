@@ -1,5 +1,5 @@
 'use client'
-
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Wallet, MapPin, Coffee, ShieldCheck, ArrowRight } from 'lucide-react'
@@ -113,11 +113,15 @@ export default function BudgetAbout() {
                 ))}
               </div>
 
-              <motion.div className="pt-8">
-                <button className="flex items-center gap-3 bg-[#1B3F22] text-[#D4AF37] px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-black transition-all shadow-lg">
-                  View Budget Plans <ArrowRight size={16} />
-                </button>
-              </motion.div>
+             <Link href="/room-booking">
+  <motion.button 
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-3 bg-[#1B3F22] text-[#D4AF37] px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-black transition-all shadow-lg"
+  >
+    View Budget Plans <ArrowRight size={16} />
+  </motion.button>
+</Link>
             </motion.div>
           </div>
 

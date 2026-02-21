@@ -1,8 +1,8 @@
 'use client'
 
-import Link from 'next/link' // Import Link from Next.js
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Utensils, BedDouble } from 'lucide-react'
+import { ArrowRight, Utensils, BedDouble, Sparkles, ReceiptText } from 'lucide-react'
 
 export default function Hero() {
   const fadeInUp = {
@@ -17,102 +17,130 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen flex items-center overflow-hidden bg-[#FAF9F6]"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#FAF9F6] pt-20"
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-[#1B3F22]/5 hidden lg:block" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#1B3F22]/5 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-2 gap-16 items-center">
         
-        {/* Left Content - SEO & Branding */}
+        {/* Left Content */}
         <motion.div 
           initial="hidden"
           animate="visible"
           className="z-10"
         >
-          <motion.div custom={0} variants={fadeInUp} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#1B3F22]/10 border border-[#1B3F22]/20 mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C5A059]"></span>
+          {/* 50% OFFER HIGHLIGHT */}
+          <motion.div 
+            custom={0} 
+            variants={fadeInUp} 
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#C5A059] mb-8 shadow-lg shadow-[#C5A059]/20"
+          >
+         
+            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#1B3F22]">
+              Special Launch Offer: 50% OFF First Booking
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#1B3F22]">Now Serving in Trivandrum</span>
           </motion.div>
 
           <motion.h1 
             custom={1} 
             variants={fadeInUp}
-            className="text-5xl lg:text-7xl font-extrabold text-[#1B3F22] leading-[1.1] mb-6"
+            className="text-6xl lg:text-[5.5rem] font-black text-[#1B3F22] leading-[0.95] mb-8 tracking-tighter"
           >
-            Where <span className="text-[#C5A059]">Heritage</span> <br /> 
-            Meets Modernity.
+            Stay <span className="text-[#C5A059]">Budget.</span> <br /> 
+            Eat <span className="italic font-serif font-light">Authentic.</span>
           </motion.h1>
 
           <motion.p 
             custom={2} 
             variants={fadeInUp}
-            className="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed"
+            className="text-xl text-gray-600 mb-12 max-w-lg leading-relaxed font-medium"
           >
-            Experience the gold standard of living. From <strong>premium room rentals</strong> to <strong>authentic Kerala tiffin services</strong>, Mullavanam Group brings the heart of Trivandrum to your doorstep.
+            Trivandrum's finest 
+            <span className="text-[#1B3F22] font-bold"> Room Stay </span> 
+            and 
+            <span className="text-[#1B3F22] font-bold"> Ruchi Tiffin services</span>. 
+            Now at <span className="bg-[#C5A059]/20 px-2 py-1 rounded font-bold text-[#8A6D3B]">Half Price</span> for your first experience.
           </motion.p>
 
           <motion.div 
             custom={3} 
             variants={fadeInUp}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-5"
           >
             <Link href="/room-booking">
-              <button className="group flex items-center bg-[#1B3F22] text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#25522d] hover:shadow-2xl active:scale-95">
+              <button className="group flex items-center justify-center bg-[#1B3F22] text-[#C5A059] px-10 py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all hover:scale-105 hover:shadow-2xl active:scale-95 w-full sm:w-auto">
                 Book a Room
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
               </button>
             </Link>
 
-            {/* Link to Ruchi Tiffin Page */}
-            <Link href="/ruchi-tiffin">
-              <button className="group flex items-center border-2 border-[#1B3F22] text-[#1B3F22] px-8 py-4 rounded-xl font-bold transition-all hover:bg-[#1B3F22] hover:text-white active:scale-95">
-                Ruchi Tiffin
-                <Utensils className="ml-2 w-4 h-4 transition-transform group-hover:rotate-12" />
+            <Link href="/menu">
+              <button className="group flex items-center justify-center bg-white border-2 border-[#1B3F22] text-[#1B3F22] px-10 py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all hover:bg-[#1B3F22] hover:text-[#C5A059] active:scale-95 w-full sm:w-auto">
+                View Menu
+                <ReceiptText className="ml-2 w-5 h-5" />
               </button>
             </Link>
           </motion.div>
+
+          <motion.p custom={4} variants={fadeInUp} className="mt-8 text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
+            *Limited time offer for new members in Trivandrum
+          </motion.p>
         </motion.div>
 
         {/* Right Content - Visuals */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative"
         >
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2000')] bg-cover bg-center">
-            <div className="absolute inset-0 bg-black/10 transition-hover hover:bg-black/0 duration-500" />
+          {/* Main Image Container */}
+          <div className="relative h-[550px] lg:h-[650px] rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border-8 border-white">
+            <img 
+              src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2000" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-110" 
+              alt="Mullavanam Room"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1B3F22]/40 to-transparent" />
           </div>
 
-          {/* Floating Cards with Links for better UX */}
-          <Link href="/room-booking">
-            <motion.div 
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 p-4 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-4 border border-white/20 cursor-pointer hover:bg-white transition-colors"
-            >
-              <div className="bg-[#C5A059] p-3 rounded-xl text-white">
-                <BedDouble size={24} />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold text-gray-400">Premium</p>
-                <p className="text-sm font-bold text-[#1B3F22]">Budget Stay</p>
-              </div>
-            </motion.div>
-          </Link>
+          {/* Floating Card: Room Booking */}
+          <motion.div 
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-6 -right-6 md:right-0 p-6 bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl flex items-center space-x-5 border border-white/20 z-20"
+          >
+            <div className="bg-[#1B3F22] p-4 rounded-2xl text-[#C5A059]">
+              <BedDouble size={28} />
+            </div>
+            <div>
+              <p className="text-[10px] uppercase font-black tracking-widest text-[#C5A059]">Rooms</p>
+              <p className="text-lg font-black text-[#1B3F22]">Starts at ₹999</p>
+            </div>
+          </motion.div>
 
-         
+          {/* Floating Card: 50% OFF CIRCLE */}
+          <motion.div 
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#C5A059] rounded-full flex flex-col items-center justify-center shadow-2xl z-30 border-4 border-[#FAF9F6]"
+          >
+            <span className="text-[#1B3F22] text-3xl font-black leading-none">50%</span>
+            <span className="text-[#1B3F22] text-[10px] font-black uppercase tracking-tighter">Discount</span>
+          </motion.div>
+
+          {/* Floating Card: Tiffin Service */}
+        
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-        <div className="w-[1px] h-12 bg-gradient-to-b from-[#1B3F22] to-transparent animate-bounce" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3">
+        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#1B3F22]/40">Explore More</span>
+        <div className="w-[2px] h-16 bg-gradient-to-b from-[#1B3F22] to-transparent" />
       </div>
     </section>
   )
