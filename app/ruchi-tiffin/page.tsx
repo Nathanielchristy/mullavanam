@@ -23,7 +23,7 @@ export default function MobileFirstSupreme() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleBooking = (plan: string) => {
-    const phoneNumber = "91945948888"
+    const phoneNumber = "919495948888"
     const message = `*Mullavanam Inquiry:* I'm interested in the *${plan}* pack (Al Ghadiya x Ruchi).`
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }
